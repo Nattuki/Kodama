@@ -1,0 +1,21 @@
+value: null
+children:
+  3:
+    value: "minor"
+    children:
+      7:
+        value: "minor"
+        children:
+          10:
+            value: "m7"
+      10:
+        value: "m7"
+  4:
+    value: "major"
+    children:
+      7:
+        value: "major"
+        children:
+          11: "maj7"
+      11:
+        value: "maj7"
