@@ -19,7 +19,7 @@ export const useMidiInput = () => {
       setNotes(Array.from(activeNotes).sort((a, b) => a - b))
     }
 
-    const initMIDI = async () => {
+    ;(async () => {
       try {
         const access = await navigator.requestMIDIAccess()
         for (const input of access.inputs.values()) {
@@ -29,9 +29,7 @@ export const useMidiInput = () => {
       } catch (error) {
         console.error("failed to initialize:", error)
       }
-    }
-
-    initMIDI()
+    })()
 
     return () => {
       inputs.forEach((input) => {
