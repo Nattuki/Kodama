@@ -1,21 +1,22 @@
-value: null
+value: []
 children:
-  3:
-    value: "minor"
+  MINOR_3:
+    value: ["m"]
     children:
-      7:
-        value: "minor"
+      PERFECT_5:
+        value: ["m"]
         children:
-          10:
-            value: "m7"
-      10:
-        value: "m7"
-  4:
-    value: "major"
+          MAJOR_7:
+            value: ["m7"]
+      MINOR_7:
+        value: ["m7"]
+  MAJOR_3:
+    value: [""]
     children:
-      7:
-        value: "major"
+      PERFECT_5:
+        value: [""]
         children:
-          11: "maj7"
-      11:
-        value: "maj7"
+          MAJOR_7:
+            value: ["maj7"]
+      MAJOR_7:
+        value: ["maj7"]
