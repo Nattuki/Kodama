@@ -1,5 +1,5 @@
 export type ChordTreeNode = {
-  value: string[]
-  inversion: number
-  children: Record<number, ChordTreeNode>
+  children?: Record<string, ChordTreeNode>
+  value?: string[]
+  inversion?: number
 }

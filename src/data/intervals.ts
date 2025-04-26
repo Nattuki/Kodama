@@ -1,12 +1,14 @@
-export const UNISON = 0
-export const MINOR_2 = 1
-export const MAJOR_2 = 2
-export const MINOR_3 = 3
-export const MAJOR_3 = 4
-export const PERFECT_4 = 5
-export const TRITONE = 6
-export const PERFECT_5 = 7
-export const MINOR_6 = 8
-export const MAJOR_6 = 9
-export const MINOR_7 = 10
-export const MAJOR_7 = 11
+export const intervalMap: string[] = [
+  "UNISON",
+  "MINOR_2",
+  "MAJOR_2",
+  "MINOR_3",
+  "MAJOR_3",
+  "PERFECT_4",
+  "TRITONE",
+  "PERFECT_5",
+  "MINOR_6",
+  "MAJOR_6",
+  "MINOR_7",
+  "MAJOR_7",
+]

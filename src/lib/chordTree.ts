@@ -1,8 +1,11 @@
 import { ChordTreeNode } from "../types/ChordTreeNode"
 import { midiToNoteName, shiftMidi } from "./midiUtils"
+import { intervalMap } from "../data/intervals"
 
 export class ChordTree {
-  constructor(private root: ChordTreeNode) {}
+  constructor(private root: ChordTreeNode) {
+    this.root = root
+  }
 
   findChord(midiNotes: number[]): string | null {
     if (midiNotes.length === 0) return null
@@ -13,19 +16,24 @@ export class ChordTree {
 
     let node: ChordTreeNode | undefined = this.root
     let lastMatchedNode: ChordTreeNode | null = null
-    for (const i of intervals) {
-      node = node?.children?.[i]
-      if (!node) break
-      if (node.value.length > 0) lastMatchedNode = node
+    for (const interval of intervals) {
+      node = node?.children?.[intervalMap[interval]]
+      if (!node) {
+        lastMatchedNode = null
+        break
+      }
+      lastMatchedNode = node
     }
 
-    if (!lastMatchedNode) return null
+    const bassNote = midiToNoteName(bassMidi)
+
+    if (!lastMatchedNode || lastMatchedNode.value === undefined)
+      return `${bassNote} ?`
 
     const chordName = lastMatchedNode.value[0]
     const inversion = lastMatchedNode.inversion
-    const bassNote = midiToNoteName(bassMidi)
 
-    if (inversion === 0) {
+    if (inversion === undefined) {
       return `${bassNote}${chordName}`
     } else {
       const rootMidi = shiftMidi(bassMidi, inversion)
