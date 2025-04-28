@@ -6,8 +6,8 @@ export const MidiMonitor = () => {
   const { findChord } = useChordTree()
   return (
     <div>
-      <h2>chord</h2>
-      <h3>{findChord(notes)}</h3>
+      <h1>chord:{notes}</h1>
+      <h1>{findChord(notes)}</h1>
     </div>
   )
 }

@@ -12,7 +12,11 @@ export class ChordTree {
 
     const sorted = [...new Set(midiNotes)].sort((a, b) => a - b)
     const bassMidi = sorted[0]
-    const intervals = sorted.slice(1).map((n) => (n - bassMidi) % 12)
+    const intervals = [
+      ...new Set(sorted.slice(1).map((n) => (n - bassMidi) % 12)),
+    ]
+      .filter((val) => val !== 0)
+      .sort((a, b) => a - b)
 
     let node: ChordTreeNode | undefined = this.root
     let lastMatchedNode: ChordTreeNode | null = null
