@@ -1,8 +1,19 @@
 import p5 from "p5"
 import { useEffect, useRef } from "react"
 
-export const P5Sketch = () => {
+type Props = {
+  midiNotes: number[]
+}
+
+export const P5Sketch = ({ midiNotes }: Props) => {
   const sketchRef = useRef<HTMLDivElement>(null)
+  const p5Instance = useRef<p5 | null>(null)
+  const midiNotesRef = useRef<number[]>(midiNotes)
+
+  useEffect(() => {
+    midiNotesRef.current = midiNotes
+    p5Instance.current?.redraw()
+  }, [midiNotes])
 
   useEffect(() => {
     const sketch = (p: p5) => {
@@ -16,10 +27,10 @@ export const P5Sketch = () => {
       }
     }
 
-    const p5Instance = new p5(sketch, sketchRef.current!)
+    p5Instance.current = new p5(sketch, sketchRef.current!)
 
     return () => {
-      p5Instance.remove()
+      p5Instance.current?.remove()
     }
   }, [])
 
